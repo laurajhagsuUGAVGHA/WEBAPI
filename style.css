@@ -1,0 +1,97 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #e0f7fa; /* Cor de fundo suave */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  width: 100vh;
+  margin-top: 70vh;
+  max-width: 600px; /* Aumenta a largura máxima */
+  text-align: center;
+}
+
+h1 {
+  color: #00796b; /* Cor do título */
+  font-size: 24px;
+  margin-bottom: 20px; /* Espaço abaixo do título */
+}
+
+h2 {
+  color: #004d40; /* Cor dos subtítulos */
+  font-size: 20px;
+  margin-bottom: 15px; /* Espaço abaixo do subtítulo */
+}
+
+textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+  margin-bottom: 15px; /* Espaço abaixo do textarea */
+  font-size: 16px; /* Aumenta o tamanho da fonte */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra interna */
+}
+
+button {
+  padding: 12px;
+  color: #ffffff;
+  background-color: #00796b;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
+}
+
+button:hover {
+  background-color: #004d40;
+  transform: translateY(-2px); /* Efeito de elevação ao passar o mouse */
+}
+
+
+.result {
+  margin-top: 20px; /* Espaço acima do resultado */
+  background-color: #e0f7fa; /* Fundo leve para destaque */
+  border-left: 5px solid #00796b; /* Borda à esquerda */
+  padding: 15px;
+  width: 71.90vh;
+  height: 20vh;
+  border-radius: 5px;
+  text-align: left; /* Alinha o texto à esquerda */
+  font-size: 16px; /* Aumenta o tamanho da fonte */
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px; /* Espaço abaixo do campo de entrada */
+  font-size: 16px; /* Aumenta o tamanho da fonte */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra interna */
+}
+
+/* Estilização separada para as seções */
+.encrypt-section, .decrypt-section {
+  margin-bottom: 30px; /* Espaço entre seções */
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9; /* Fundo claro para as seções */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+.encrypt-section h2, .decrypt-section h2 {
+  margin-bottom: 10px; /* Espaço abaixo do subtítulo */
+}

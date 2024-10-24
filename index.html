@@ -1,0 +1,93 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API de Criptografia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Criptografia de Mensagens</h1>
+
+        <div class="encrypt-section">
+            <h2>Criptografar Mensagem</h2>
+            <textarea id="message-input" rows="4" placeholder="Digite sua mensagem aqui..."></textarea>
+            <button id="encrypt-button">Criptografar</button>
+            <div id="encrypt-result" class="result"></div>
+        </div>
+
+        <div class="decrypt-section">
+            <h2>Descriptografar Mensagem</h2>
+            <textarea id="encrypted-input" rows="4" placeholder="Dados criptografados aqui..."></textarea>
+            <input type="text" id="iv-input" placeholder="IV aqui..." />
+            <button id="decrypt-button">Descriptografar</button>
+            <div id="decrypt-result" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        const apiKey = '1234567890abcdef'; // Chave de API
+
+        // Função para criptografar a mensagem
+        document.getElementById('encrypt-button').addEventListener('click', () => {
+            const message = document.getElementById('message-input').value;
+
+            fetch('http://localhost:3000/encrypt', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-api-key': apiKey
+                },
+                body: JSON.stringify({ message })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao criptografar a mensagem: ' + response.status);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('encrypt-result').innerHTML = `
+                        <strong>Dados Criptografados:</strong> ${data.encryptedData}<br>
+                        <strong>IV:</strong> ${data.iv}<br>
+                        <strong>Chave:</strong> ${data.key}
+                    `;
+                })
+                .catch(error => alert(error.message));
+        });
+
+        // Função para descriptografar a mensagem
+        document.getElementById('decrypt-button').addEventListener('click', () => {
+            const encryptedData = document.getElementById('encrypted-input').value;
+            const iv = document.getElementById('iv-input').value;
+
+            fetch('http://localhost:3000/decrypt', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-api-key': apiKey
+                },
+                body: JSON.stringify({ encryptedData, iv })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao descriptografar a mensagem: ' + response.status);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('decrypt-result').innerHTML = `
+                        <strong>Mensagem Descriptografada:</strong> ${data.decryptedMessage}
+                    `;
+                })
+                .catch(error => alert(error.message));
+        });
+    </script>
+</body>
+
+</html>
